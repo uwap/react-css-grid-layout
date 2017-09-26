@@ -8,7 +8,7 @@ export default class GridContainer extends Component {
       display: 'grid',
       gridTemplateRows: rowTemplate,
       gridTemplateColumns: columnTemplate,
-      gridTemplateAreas: areasTemplate,
+      gridTemplateAreas: areasTemplate.reduce((a,b) => a + " " + '"' + b + '"', ""),
       ...this.props.style
     }
 
@@ -19,7 +19,7 @@ export default class GridContainer extends Component {
 GridContainer.propTypes = {
   rowTemplate: React.PropTypes.string,
   columnTemplate: React.PropTypes.string,
-  areasTemplate: React.PropTypes.string,
+  areasTemplate: React.PropTypes.arrayOf(React.PropTypes.string),
   children: React.PropTypes.node,
   style: React.PropTypes.object
 }
